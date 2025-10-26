@@ -1,160 +1,396 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kicimpring - Makanan Khas Indonesia</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        header {
-            background-color: #ffcc00;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        nav {
-            margin: 20px 0;
-        }
-        nav button {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ffcc00;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        nav button:hover {
-            background-color: #ff9900;
-            transform: scale(1.1);
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        h2 {
-            color: #ffcc00;
-            border-bottom: 2px solid #ffcc00;
-            padding-bottom: 10px;
-        }
-        ul, ol {
-            padding-left: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #ffcc00;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .recipe {
-            display: none;
-        }
-        .image-container {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
-        .image-container img {
-            max-width: 32%;
-            height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        .image-container img:hover {
-            transform: scale(1.05);
-        }
-        video {
-          display: flex;
-        }
-    </style>
-    <script>
-        function showRecipe() {
-            document.getElementById('recipe').style.display = 'block';
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('contact').style.display = 'none';
-        }
-        function showAbout() {
-            document.getElementById('about').style.display = 'block';
-            document.getElementById('recipe').style.display = 'none';
-            document.getElementById('contact').style.display = 'none';
-        }
-        function showContact() {
-            document.getElementById('contact').style.display = 'block';
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('recipe').style.display = 'none';
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Saya - Dika Satria Pratama</title>
+
+  <!-- 🌟 AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ======== UMUM ======== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e1f26, #28313b, #485563);
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* ======== SCROLL PROGRESS BAR ======== */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: #00d4ff;
+      z-index: 9999;
+      transition: width 0.25s;
+    }
+
+    /* ======== EFEK PARTIKEL ======== */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* ======== HEADER ======== */
+    header {
+      text-align: center;
+      padding: 70px 20px;
+      position: relative;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #00d4ff;
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+      object-fit: cover;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(0, 212, 255, 0.7);
+    }
+
+    header h1 {
+      color: #00d4ff;
+      font-size: 2.4em;
+      margin-top: 25px;
+      letter-spacing: 1px;
+    }
+
+    header h2 {
+      color: #ffcc00;
+      font-size: 1.4em;
+      margin-top: 10px;
+      min-height: 30px;
+    }
+
+    header p {
+      color: #ccc;
+      font-size: 1.1em;
+      margin-top: 8px;
+    }
+
+    /* ======== SECTION ======== */
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 35px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    section:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+    }
+
+    h2 {
+      color: #00d4ff;
+      border-bottom: 2px solid #00d4ff;
+      padding-bottom: 10px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    p, li {
+      color: #ddd;
+      line-height: 1.7;
+    }
+
+    ul { list-style: none; padding: 0; }
+    li {
+      background: rgba(255,255,255,0.1);
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    li:hover { background: rgba(0,212,255,0.15); }
+
+    /* ======== MOTTO ======== */
+    .motto {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #ffcc00;
+      background: rgba(255,255,255,0.08);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.1);
+      transition: 0.4s;
+    }
+
+    .motto:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    }
+
+    /* ======== FAVORITES ======== */
+    .favorites {
+      text-align: center;
+    }
+
+    .favorites img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin: 12px;
+      border: 3px solid #00d4ff;
+      box-shadow: 0 0 15px rgba(0,212,255,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .favorites img:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 25px rgba(0,212,255,0.8);
+    }
+
+    /* ======== GALERI ======== */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,212,255,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ======== MUSIK ======== */
+    .music iframe {
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px rgba(0,212,255,0.4);
+    }
+
+    /* ======== FOOTER ======== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: rgba(0,0,0,0.6);
+      margin-top: 50px;
+      color: #aaa;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+    }
+
+    footer p span {
+      color: #00d4ff;
+    }
+
+    /* ======== FOOTER WIDGET ======== */
+    .footer-widget {
+      margin-bottom: 10px;
+    }
+    .footer-widget p {
+      margin: 4px 0;
+      font-size: 0.9em;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.7em; }
+      section { padding: 20px; }
+      .favorites img { width: 90px; height: 90px; }
+      .gallery img { width: 140px; height: 140px; }
+    }
+    h3 { text-align: center; }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Kicimpring</h1>
-    <nav>
-        <button onclick="showAbout()">Tentang</button>
-        <button onclick="showRecipe()">Resep</button>
-        <button onclick="showContact()">Kontak</button>
-    </nav>
-</header>
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="progress-bar"></div>
 
-<div class="container">
-    <div class="image-container">
-        <img src="m">
-        <img src="g">
-        <img src="p">
+  <!-- 🌌 BACKGROUND PARTIKEL -->
+  <div id="particles-js"></div>
+
+  <!-- HEADER -->
+  <header data-aos="fade-down">
+    <img src="p" alt="Foto Profil">
+    <h1>Hai, Saya Pratama Dika</h1>
+    <h2 id="typed-text"></h2>
+    <p>Orang yang baik hati dan tidak sombong  🌟</p>
+    <p>layaknya bintang ia selalu terlihat terang di tengah kegelapan</p>
+  </header>
+
+  <!-- MOTTO HIDUP -->
+  <section data-aos="zoom-in">
+    <h2>Motto Hidup 🌱</h2>
+    <div class="motto">
+      “Jangan takut mencoba hal baru. Kadang hal kecil yang kamu mulai hari ini bisa jadi sesuatu yang besar di masa depan.”
     </div>
-    <section id="recipe" class="recipe">
-    <h2>Resep Kicimpring</h2>
-    <h3>Bahan-bahan:</h3>
+  </section>
+
+  <!-- TENTANG SAYA -->
+  <section data-aos="fade-up">
+    <h2>Tentang Saya</h2>
+    <p>
+      Halo! Nama saya <strong>Pratama Dika</strong>. Saya berasal dari Bandung dan suka berkenalan dengan orang baru.
+      Saya senang mempelajari hal-hal baru, mendengarkan musik, serta menikmati waktu dengan teman.
+    </p>
+  </section>
+
+  <!-- HOBI -->
+  <section data-aos="fade-up">
+    <h2>Hobi🎨</h2>
     <ul>
-        <li>200 gram tepung beras</li>
-        <li>50 gram tepung tapioka</li>
-        <li>1 sendok teh garam</li>
-        <li>1 sendok teh bawang putih halus</li>
-        <li>Air secukupnya</li>
-        <li>Minyak untuk menggoreng</li>
+      <li>🎧 Mendengarkan musik sambil ngopi</li>
+      <li>📸 Fotografi dan edit foto</li>
+      <li>⚽ Bermain sepak bola</li>
+      <li>✈️ Traveling ke tempat baru</li>
     </ul>
-    <h3>Langkah-langkah:</h3>
-    <ol>
-        <li>Campurkan semua bahan kering dalam wadah.</li>
-        <li>Tambahkan air sedikit-sedikit hingga adonan bisa dipadatkan.</li>
-        <li>Bentuk adonan sesuai selera.</li>
-        <li>Goreng dalam minyak panas hingga kecokelatan.</li>
-        <li>Tiriskan dan sajikan.</li>
-    </ol>
-</section>
+  </section>
 
-<section id="contact">
-    <h2>Kontak</h2>
-    <p>Untuk informasi lebih lanjut, silakan hubungi kami di email: info@kicimpring.com</p>
-</section>
+  <!-- TIM FAVORIT -->
+  <section class="favorites" data-aos="fade-up">
+    <h2>Tim & Idola Favorit 🏆</h2>
+    <img src="b" alt="Real madrid">
+    <img src="a" alt="Cristiano Ronaldo">
+    <p><strong>Real Madrid</strong> & <strong>Jude Belinggham</strong> adalah inspirasi saya soal semangat juang 💪</p>
+    <p>15 ucl nih bos</p>
+  </section>
 
-    <section id="about">
-        <h2>Tentang Kicimpring</h2>
-        <p>makanan kicimpring adalah makanan khas Indonesia</p>
-        <video controls autoplay loop width="350">
-          <source src="k">
-        </video>
+  <!-- GALERI FOTO -->
+  <section data-aos="fade-up">
+    <h2>Galeri Kenangan 📸</h2>
+    <h3>Kenapa fotonya buang muka terus, biar keliatan gantengnya🗿</h3>
+    <div class="gallery">
+      <img src="c" alt="Liburan">
+      <img src="d" alt="Teman">
+      <img src="e" alt="Pemandangan">
+      <img src="f" alt="Momen Bahagia">
+    </div>
+  </section>
+
+  <!-- MUSIK -->
+  <section class="music" data-aos="fade-up">
+    <h2>Lagu Favorit 🎵</h2>
+    <p>Lagu yang selalu bikin mood naik drastis:</p>
+    <iframe src="https://open.spotify.com/embed/track/5NvOZCjZaGGGL597exlQWv" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/1BLfQ6dPXmuDrFmbdfW7Jl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-aos="fade-up">
+    <div class="footer-widget">
+      <p id="time">🕒 --:--:--</p>
+      <p id="weather">☀️ Loading cuaca...</p>
+    </div>
+    <p>Terima kasih sudah mampir! <span>🌸 Tetap semangattttt!</span></p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    // ===== AOS INIT =====
+    AOS.init({ duration: 1000, once: true });
+
+    // ===== PARTICLES JS =====
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80 },
+        "color": { "value": "#00d4ff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.3 },
+        "size": { "value": 3 },
+        "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.2, "width": 1 },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" } },
+        "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
+      },
+      "retina_detect": true
+    });
+
+    // ===== TYPED JS =====
+    var typed = new Typed('#typed-text', {
+      strings: ["Selamat datang di halaman saya!", "Mari belajar hal baru!", "Nikmati musik dan cerita saya!"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
+    });
+
+    // ===== SCROLL PROGRESS BAR =====
+    window.addEventListener('scroll', function() {
+      let scrollTop = document.documentElement.scrollTop;
+      let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrollPercent = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrollPercent + "%";
+    });
+
+    // ===== TIME WIDGET =====
+    function updateTime() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2,'0');
+      const m = String(now.getMinutes()).padStart(2,'0');
+      const s = String(now.getSeconds()).padStart(2,'0');
+      document.getElementById('time').textContent = `🕒 ${h}:${m}:${s}`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // ===== WEATHER WIDGET =====
+    const apiKey = "MASUKKAN_API_KEY_OPENWEATHERMAP"; // Ganti dengan API key OpenWeatherMap
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bandung&units=metric&appid=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        const temp = Math.round(data.main.temp);
+        const desc = data.weather[0].description;
+        document.getElementById('weather').textContent = `🌡️ ${temp}°C, ${desc}`;
+      })
+      .catch(err => { document.getElementById('weather').textContent = "⚠️ Cuaca gagal dimuat"; });
+  </script>
+</body>
+</html>
